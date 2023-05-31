@@ -11,17 +11,28 @@
     <script>
         console.log("*******1******")
         $(document).ready(function () {
-            const utmParams = window.location.search; // Get the UTM parameters from the current URL
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const utmSource = urlParams.get('utm_source');
+            console.log("utmSource",utmSource);
+            const utmMedium = urlParams.get('utm_medium');
+            console.log("utmMedium",utmMedium);
+            const utmCampaign = urlParams.get('utm_campaign');
+            console.log("utmCampaign",utmCampaign);
+            const utmTerm = urlParams.get('utm_term');
+            console.log("utmTerm",utmTerm);
+            const utmContent = urlParams.get('utm_content');
+            console.log("utmContent",utmContent);
 
             if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
                 console.log('Device android');
-                window.location.href = 'https://play.google.com/store/apps/details?id=com.tataaig.android' + utmParams;
+                window.location.href = `https://play.google.com/store/apps/details?id=com.tataaig.android&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}`;
             } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
-                window.location.href = 'https://apps.apple.com/in/app/tata-aig-insurance/id1586595850' + utmParams;
+                window.location.href = `https://apps.apple.com/in/app/tata-aig-insurance/id1586595850/?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}`;
                 console.log('Device iphone');
             } else {
                 console.log('Device others');
-                window.location.href = 'https://www.tataaig.com/' + utmParams;
+                window.location.href = `https://www.tataaig.com/?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}`;
             }
         });
     </script>
