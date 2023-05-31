@@ -10,18 +10,20 @@
         integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
+            const utmParams = window.location.search; // Get the UTM parameters from the current URL
+
             if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
                 console.log('Device android');
-                window.location.href = 'https://play.google.com/store/apps/details?id=com.tataaig.android';
-            }
-            else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
-                window.location.href = 'https://apps.apple.com/in/app/tata-aig-insurance/id1586595850';
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.tataaig.android' + utmParams;
+            } else if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+                window.location.href = 'https://apps.apple.com/in/app/tata-aig-insurance/id1586595850' + utmParams;
                 console.log('Device iphone');
             } else {
                 console.log('Device others');
-                window.location.href = 'https://www.tataaig.com/';
+                window.location.href = 'https://www.tataaig.com/' + utmParams;
             }
-        });</script>
+        });
+    </script>
 </head>
 
 <body></body>
